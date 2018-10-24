@@ -1,0 +1,69 @@
+#myFab{
+    
+    background-size: cover;
+    transform: scale(2) ;
+    background-color: #262626;
+
+    img{
+        position: relative;
+        transform: scale(1.3);
+    }
+    ion-icon{
+        font-size: 2.5em;
+        width: 100%;
+    }
+}
+#header{
+    padding: 20px 0;
+    height: 175px;
+    width: 96%;
+    margin: 0 auto;
+    background: #1cd8d2;
+    border-bottom: 35px solid white;
+    border-right: 50vw solid transparent;
+    border-left: 50vw solid transparent;
+
+    
+    #cont{
+       left: 50%;
+       transform: translateX(-50%);
+       top: 115px;
+
+    }
+}
+
+ion-title{
+    padding-top: 12px;
+}
+#username{
+    text-align: center;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    display: block;
+    color: #f0f8ff;
+    margin-top: 20px;
+    font-size: 22px;
+    text-transform: capitalize;
+}
+#posts{
+    margin-top: 70px;
+
+    ion-list-header{
+        text-align: center;
+    }
+}
+ion-item{
+
+    #delete{
+        position: absolute;
+        right: 10px;
+        top: 1px;
+    }
+
+
+}
+output{
+    color:white;
+    background-color: black;
+}

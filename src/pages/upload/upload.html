@@ -1,0 +1,78 @@
+<ion-header>
+	<ion-navbar>
+		<ion-row>
+			<button clear icon-only ion-button (click)="close();">
+				<ion-icon name="close"></ion-icon>
+			</button>
+			<ion-title>Post Item</ion-title>
+		</ion-row>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+		<ion-item class="clear">
+			<ion-label floating>Title</ion-label>
+			<ion-input type="text" [(ngModel)]="title"></ion-input>
+		</ion-item>
+		<ion-item class="clear">
+			<ion-label floating>Description</ion-label>
+			<ion-textarea type="text" [(ngModel)]="description"></ion-textarea>
+		</ion-item>
+		<ion-item class="clear">
+			<ion-label floating>Choose Toy Type</ion-label>
+			<ion-select [selectOptions]="selectOptions" [(ngModel)]="toyType">
+				<ion-option *ngFor="let type of types" value="{{type}}">{{type}}</ion-option>
+			</ion-select>
+		</ion-item>
+	</ion-list>
+
+	<ion-list-header>
+		Bid duration
+		<ion-badge item-end>{{bidDuration}} Days</ion-badge>
+		<ion-icon item-end name="calendar"></ion-icon>
+</ion-list-header>
+	<ion-item>
+		<ion-range [(ngModel)]="bidDuration" min="3" max="21" pin="true">
+			<ion-label range-left>3</ion-label>
+			<ion-label range-right>21</ion-label>
+		</ion-range>
+	</ion-item>
+
+	<ion-card id="preview">
+		
+		<div class="thumbnails" *ngFor="let thumb of pictures; let ind = index" [ngStyle] ="{ 'background-image' : 'url(' + thumb.uri + ')'}">
+			<button class = "remove" icon-only (click) = "remove(ind)"></button>	
+		</div>
+	</ion-card>
+	<ion-row>
+		<ion-col col-8>
+			<div id="status">
+				{{pictures.length}} added. you can still add {{6 - pictures.length}}.
+			</div>
+		</ion-col>
+		<ion-col col-2>
+			<ion-fab center>
+				<button ion-fab mini (click)="openGallery();">
+          <ion-icon name="images"></ion-icon>
+        </button>
+			</ion-fab>
+		</ion-col>
+		<ion-col col-2>
+			<ion-fab center>
+				<button ion-fab mini (click)="takePicture();">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+			</ion-fab>
+    </ion-col>
+	</ion-row>
+	<ion-row>
+		<button ion-button full (click)="uploadImage();">
+			place bid
+		</button>
+	</ion-row>
+
+	
+
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-row>
+      <ion-col col-2>
+        <button class = "cb" icon-only clear (click) = "home();"><ion-icon name = "home"></ion-icon></button>
+      </ion-col>
+      <ion-col col-8><div id="dashlogo"></div></ion-col>
+      <ion-col col-2>
+        <button class = "cb" icon-only clear><ion-icon name = "more"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+  <ion-row>
+    <ion-col col-4>
+      <button small ion-button full clear (click) = "toggleScreens(1);">flagged</button>
+      <div class="activieScreen" *ngIf = "activeScreen == 1"></div>
+    </ion-col>
+    <ion-col col-4>
+      <button small ion-button full clear (click) = "toggleScreens(2);">active bids</button>
+      <div class="activieScreen" *ngIf = "activeScreen == 2"></div>
+    </ion-col>
+    <ion-col col-4>
+      <button small ion-button full clear (click) = "toggleScreens(3);">users</button>
+      <div class="activieScreen" *ngIf = "activeScreen == 3"></div>
+    </ion-col>
+  </ion-row>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf = "activeScreen == 1">
+    <h5>flags</h5>
+  </div>
+  <div *ngIf = "activeScreen == 2">
+      
+      <ion-list>
+          <ion-item>
+              <ion-label floating>period in months</ion-label>
+              <ion-select (ionChange)="onChange();" [selectOptions]="selectOptions" [(ngModel)]="month">
+                <ion-option value="All time">All</ion-option>
+                <ion-option value="January">January</ion-option>
+                <ion-option value="February">February</ion-option>
+                <ion-option value="March">March</ion-option>
+                <ion-option value="April">April</ion-option>
+                <ion-option value="June">June</ion-option>
+                <ion-option value="July">July</ion-option>
+                <ion-option value="August">August</ion-option>
+                <ion-option value="September">September</ion-option>
+                <ion-option value="October">October</ion-option>
+                <ion-option value="November">November</ion-option>
+                <ion-option value="December">December</ion-option>
+              </ion-select>
+          </ion-item>
+          <br>
+          <ion-list-header>
+             results per page
+            <ion-badge item-start>{{numOfResults}}</ion-badge>
+            <ion-icon small item-end name="options"></ion-icon>
+          </ion-list-header>
+          <ion-item>
+            <ion-range [(ngModel)]="numOfResults" (ionChange)="onChange();" min="1" max="10" pin="true">
+              <ion-label range-left>1</ion-label>
+              <ion-label range-right>10</ion-label>
+            </ion-range>
+          </ion-item>
+      </ion-list>
+      <ion-card>
+        <div id="chart_div"></div>
+      </ion-card> 
+
+      <ion-item *ngFor = "let item of filteredList; let ind = index">
+        <ion-avatar item-start>
+          <img src="../assets/imgs/logo.png">
+        </ion-avatar>
+        <h2>({{ind + 1}})</h2>
+        <p>41 views</p>
+      </ion-item>
+  </div>
+  <div *ngIf = "activeScreen == 3">
+    <ion-list>
+      <ion-list-header>
+        Active users
+      </ion-list-header>
+      <ion-item-sliding *ngFor = "let user of users; let ind = index">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="{{user.profilePic}}">
+          </ion-avatar>
+          <h2>{{user.name}}</h2>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="close"></ion-icon>
+            Block
+          </button>
+          <button ion-button color="danger">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+  
+</ion-content>

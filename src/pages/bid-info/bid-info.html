@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-row>
+      <button clear icon-only ion-button (click) = "close();">
+        <ion-icon name="close"></ion-icon>
+      </button>
+      <ion-title>Item Details</ion-title>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  
+
+  <ion-card>
+    <div id="bid-preview">
+      <ion-slides pager>
+        <ion-slide *ngFor = "let slideUrls of itemImageUri; let j = index">
+          <img class = "ph" src="{{slideUrls}}"/>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <ion-card-content>
+      <ion-card-title>
+        {{itemName}}
+      </ion-card-title>
+      <p>
+        {{itemDescription}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  
+
+  <div id="bid-main">    
+    <ion-list>
+      <ion-list-header>
+       <p>
+        Available Offers 
+       </p>
+       <ion-badge item-end>{{ offerSize }}</ion-badge>
+      </ion-list-header>
+      <ion-item *ngFor="let offer of offersObjArr; let i = index" (click)="viewOffer(offer)">
+        <ion-avatar item-start>
+          <img src={{ownerProfilePic}}>
+        </ion-avatar>
+        <p>
+          {{offerOwnersArr[i].name}}
+        </p>
+        <p>
+          {{offerMechandisesArr[i].name}}
+        </p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-row>
+          <button clear ion-button icon-only (click) = "cancel();">
+              <ion-icon name="arrow-back"></ion-icon>
+          </button>
+          <ion-title>Notifications</ion-title>
+      </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="notification" (click) = "viewBid();">
+    <ion-row>
+      <ion-col col-10>
+        this person made an offer
+      </ion-col>
+      <ion-col col-2>
+          <img src="../../assets/imgs/user.svg" alt="">
+        </ion-col>
+    </ion-row>
+  </div>
+  <div class="notification" (click) = "viewBid();">
+    <ion-row>
+      <ion-col col-10>
+        this person made an offer
+      </ion-col>
+      <ion-col col-2>
+        <img src="../../assets/imgs/user.svg" alt="">
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

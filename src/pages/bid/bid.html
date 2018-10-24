@@ -1,0 +1,73 @@
+<ion-header>
+	<ion-navbar>
+		<ion-row>
+			<button icon-only clear ion-button (click)="close();">
+				<ion-icon name="close"></ion-icon>
+			</button>
+			<ion-title>Bid Item</ion-title>
+		</ion-row>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<div class="card-background-page">
+		<ion-card>
+			<img src="{{itemPicture}}"/>
+			<div class="card-title">{{itemName}}</div>
+			<div class="card-subtitle">{{itemDescription}}</div>
+		</ion-card>
+	</div>
+	
+	<ion-list>
+		<ion-item class="clear">
+			<ion-label floating>Title</ion-label>
+			<ion-input type="text" [(ngModel)]="title"></ion-input>
+		</ion-item>
+		<ion-item class="clear">
+			<ion-label floating>Description</ion-label>
+			<ion-textarea type="text" [(ngModel)]="description"></ion-textarea>
+		</ion-item>
+		<ion-item class="clear">
+			<ion-label floating>Choose Toy Type</ion-label>
+			<ion-select [selectOptions]="selectOptions" [(ngModel)]="toyType">
+				<ion-option *ngFor="let type of types" value="{{type}}">{{type}}</ion-option>
+			</ion-select>
+		</ion-item>
+	</ion-list>
+
+	<ion-card id="preview">
+		<div class="thumbnails" *ngFor="let thumb of pictures; let ind = index" [ngStyle] ="{ 'background-image' : 'url(' + thumb.uri + ')'}">
+			<button ion-button icon-only clear (click) = "remove(ind)">
+				<ion-icon name="close-circle"></ion-icon>
+			</button>
+		</div>
+	</ion-card>
+	<ion-row>
+		<ion-col col-8>
+			<div id="status">
+				{{pictures.length}} added. you can still add {{6 - pictures.length}}.
+			</div>
+		</ion-col>
+		<ion-col col-2>
+			<ion-fab center>
+				<button ion-fab mini (click)="openGallery();">
+          <ion-icon name="images"></ion-icon>
+        </button>
+			</ion-fab>
+		</ion-col>
+		<ion-col col-2>
+			<ion-fab center>
+				<button ion-fab mini (click)="takePicture();">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+			</ion-fab>
+    </ion-col>
+	</ion-row>
+	<ion-row>
+		<button ion-button full (click)="uploadImage();">
+			place bid
+		</button>
+	</ion-row>
+
+</ion-content>

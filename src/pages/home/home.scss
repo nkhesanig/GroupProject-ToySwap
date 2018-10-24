@@ -1,0 +1,117 @@
+#blur{
+    background: url(../assets/imgs/walle.jpg) no-repeat center;
+    background-size: cover;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    filter: blur(5px);
+    z-index: -6666;
+}
+
+#blur::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($color: #fff, $alpha: .55);
+}
+#logo{
+    width: 130px;
+    height: 55px;
+    background: url(../assets/imgs/toy-swap.png) center no-repeat;
+    background-size: contain;
+    margin: 20px 10px 10px calc(50% - 65px);
+}
+
+.clear{
+    background: transparent !important;
+
+    .tb{
+        color: #293f55;
+        text-align: right;
+       
+
+        ::placeholder{
+            color: #293f55;
+        }
+    }
+}
+
+.bt{
+    border-radius: 20px !important;
+    margin-top: 30px !important;
+    background: transparent;
+    color: #293f55;
+    font-weight: normal;
+    font-size: 11px;
+    border: 2px solid rgba($color: #293f55, $alpha: .7);
+    box-shadow: none;
+
+}
+.lb{
+    color: #293f55 !important;
+    text-align: center;
+    font-size: 11pt !important;
+    font-weight: lighter !important;
+}
+#reset{
+    color: #293f55;
+    font-size: 12pt;
+    display: block;
+    background: none;
+    margin: auto;
+    padding: 20px 0;
+    text-decoration: underline;
+}
+
+.validation-errors{
+    color: #ff0033;
+    transition: all .3s ease;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.sl{
+    height: auto !important;
+    overflow-y: scroll;
+}
+
+.form{
+   padding-top: 15px;
+}
+.alert-head, .alert-sub-title{
+    color: #293f55 !important;
+}
+h2{
+    width: 100%;
+    padding: 10px;
+    color: #293f55;
+    display: block;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+#flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    button{
+        margin: 20px;
+    }
+}
+
+#heading{
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: lighters;
+    color: #293f55;
+    letter-spacing: 2px;
+    font-size: 12px;
+}

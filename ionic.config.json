@@ -1,0 +1,7 @@
+{
+  "name": "toySwap",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

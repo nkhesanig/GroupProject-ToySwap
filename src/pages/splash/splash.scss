@@ -1,0 +1,66 @@
+#detail{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    height: 78vh;
+    background: #1cd8d2;
+    width: 100%;
+    border-bottom: 35px solid white;
+    border-right: 50vw solid transparent;
+    border-left: 50vw solid transparent;
+}
+
+#splash-logo{
+    position: absolute;
+    background: url(../assets/imgs/toy-swap.png) no-repeat center bottom;
+    background-size: 180px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 160px;
+
+}
+#center{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-pagination-bullet-active{
+    background : #afdbda;
+}
+
+.ic{
+
+    height: 150px !important;
+    padding: 15px 0;
+}
+
+ion-slide h5{
+    color: white;
+    padding: 0 20px;
+    letter-spacing: 1.5px;
+}
+
+#start{
+    position: absolute;
+    bottom: 50px;
+    left: 40px;
+    width: calc(100% - 80px);
+    border: 2px solid #1cd8d2;
+    color: #1cd8d2;
+    background: transparent;
+    font-size: 13px;
+    //background: linear-gradient(to right, #4ac29a, #bdfff3); 
+    box-shadow: none;
+    z-index: 9999;
+    border-radius: 20px !important;
+    margin-top: 30px !important;
+    padding: 0 20px;
+
+}

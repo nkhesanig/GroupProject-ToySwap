@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-row>
+      <ion-title>Profile</ion-title>
+      <ion-col  col-2>
+        <button ion-button icon-only  clear medium (click) = "signOut();">
+          <ion-icon name = "log-out" ></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div id="header">
+    <ion-fab id = "cont" >
+      <button ion-fab id = "myFab" >
+        <img src="{{profilePhoto}}" alt="">
+      </button>
+      <ion-fab-list side="left">
+        <button ion-fab><ion-icon name="images"></ion-icon></button>
+      </ion-fab-list>
+      <ion-fab-list side="top">
+        <button ion-fab><ion-icon name="camera"></ion-icon></button>
+      </ion-fab-list>
+      <ion-fab-list side="right">
+        <button ion-fab><ion-icon name="link"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+    <div id="username">{{username}}</div>
+  </div>
+
+  <ion-list id = "posts">
+    <ion-list-header>
+      recent posts | tap item for more info
+    </ion-list-header>
+    <ion-item *ngFor= "let bid of h; let i = index" (click)="userBidClick(bid)">
+      <ion-avatar item-start>
+        <img src={{itemProfileImg[0]}}>
+      </ion-avatar>
+      <p>{{items[i].name}}</p>
+      <p>{{items[i].description}}</p>
+    </ion-item>
+  </ion-list>
+  <ion-fab bottom right>
+    <button ion-fab color = "dark" (click) = "dash();" *ngIf = "userType == 'admin'"><ion-icon name="options"></ion-icon></button>
+  </ion-fab>
+  
+  
+</ion-content>

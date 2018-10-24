@@ -1,0 +1,84 @@
+<ion-content id = "feed">
+  <ion-fab id="nav">
+    <button ion-fab style="display: none;"></button>
+    <ion-row>
+      <ion-col  col-2>
+        <button ion-button icon-only  clear medium (click) = "profile();">
+          <ion-icon name = "person"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col  col->
+          <ion-searchbar
+          [(ngModel)]="myInput"
+          [showCancelButton]="True"
+          (search)="search($event)"
+          (ionClear)="onClear($event)"
+          (ionCancel)="onCancel($event)">
+        </ion-searchbar>
+      </ion-col>
+      <ion-col  col-2>
+        <button ion-button icon-only  clear medium (click) = "notify();">
+          <ion-icon name="notifications"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-fab>
+  <div id="activity">
+    Activity feed <small>{{date | date:'yyyy-MM-dd'}}</small>
+  </div>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf= "searchResults.length > 0">
+    <button ion-button id = "resetSearch" (click) = "retrieveData();">clear search</button>  
+  </div>
+  <div id = "main"> 
+    <ion-card  *ngFor = "let item of items; let i = index" class = "cards">
+      <ion-slides pager>
+        <ion-slide *ngFor = "let slideUrls of imgObjUri[i].imageUri; let j = index">
+          <div class="img-ph">
+            <img class = "img" src="{{slideUrls}}"/>
+          </div>
+        </ion-slide>
+      </ion-slides>
+      <div class = "profile">
+  
+        <ion-fab class = "img-fab">
+          <button ion-fab (click)="viewBidderProfiles(item)"><img src="{{ownerObjArr[i].profilePic}}"></button>
+        </ion-fab>
+        <ion-row>
+          <ion-col>
+            <h3 ion-text>{{ownerObjArr[i].name}}</h3>
+          </ion-col>
+          <ion-col>
+            <h3 ion-text id = "right">{{(itemsObjArr[i].bidDuration - currentDay) / 60 / 60 / 24 / 1000   | number : '2.0-0' }} days left</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-4>
+              <button ion-button icon-start clear medium (click) = "bidFor(item)">
+                <ion-icon name="add-circle" color = "light"></ion-icon>
+                <div>bid</div>
+              </button>
+            </ion-col>
+            <ion-col col-4>
+              <button ion-button icon-start clear medium (click)="reportBid(item)">
+                <ion-icon name="flag" color = "light"></ion-icon>
+                <div>report</div>
+              </button>
+            </ion-col>
+            <ion-col col-4 center text-center>
+              <button ion-button icon-start clear medium>
+                <ion-icon name="eye"color = "light" ></ion-icon>
+                <ion-badge color = "light" item-end>{{views[i]}}</ion-badge>
+              </button>
+            </ion-col>
+          </ion-row>
+      </div>
+    </ion-card>
+  </div>
+
+  <ion-fab bottom right fixed>
+    <button ion-fab color = "dark" (click) = "addItem();"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
